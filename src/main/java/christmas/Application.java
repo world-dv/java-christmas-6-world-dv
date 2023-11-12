@@ -12,7 +12,6 @@ public class Application {
         OrderList orderList = inputOrder();
         System.out.println("12월 " + dateToVisit.getVisitDate() + "일에 우테코 식당에서 받을 이벤트 혜택 미리보기!\n");
         orderList.printOrderList();
-        Menu menu = new Menu();
     }
 
     public static DateToVisit inputDate() {

@@ -26,4 +26,8 @@ public class Menu {
         menu.put("샴페인", 25000);
         return menu;
     }
+
+    public Map<String, Integer> getMenu() {
+        return menu;
+    }
 }
