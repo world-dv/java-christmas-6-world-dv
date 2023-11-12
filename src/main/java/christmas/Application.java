@@ -15,7 +15,7 @@ public class Application {
         orderList.printOrderList();
         orderList.printOrderPrice();
 
-        Event event = new Event(orderList, dateToVisit.getVisitDate());
+        Event event = new Event(orderList, dateToVisit);
         event.printGiveawayEvent();
     }
 
