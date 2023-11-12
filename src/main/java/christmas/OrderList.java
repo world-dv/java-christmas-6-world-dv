@@ -91,6 +91,10 @@ public class OrderList {
     }
 
     public void printOrderPrice() {
-        System.out.printf("<할인 전 총주문 금액>\n%,d원\n".formatted(orderPrice));
+        System.out.printf("<할인 전 총주문 금액>\n%,d원\n\n".formatted(orderPrice));
+    }
+
+    public Integer getOrderPrice() {
+        return orderPrice;
     }
 }
