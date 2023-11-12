@@ -9,6 +9,10 @@ public class Order {
         this.count = count;
     }
 
+    private void validate(String name, int count) {
+
+    }
+
     public String getName() {
         return name;
     }
