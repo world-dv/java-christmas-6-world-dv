@@ -24,9 +24,16 @@ public class OrderList {
     private List<Order> createOrderList(List<String> orders) {
         List<Order> orderList = new ArrayList<>();
         for (String order : orders) {
+            if (!isContainBarOrComma(order)) {
+                throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+            }
             orderList.add(createOrder(splitOrder(order)));
         }
         return orderList;
+    }
+
+    private Boolean isContainBarOrComma(String order) {
+        return order.contains("-") || order.contains(",");
     }
 
     private List<String> splitOrder(String order) {
