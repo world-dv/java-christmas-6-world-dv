@@ -12,6 +12,7 @@ public class Application {
         OrderList orderList = inputOrder();
         System.out.println("12월 " + dateToVisit.getVisitDate() + "일에 우테코 식당에서 받을 이벤트 혜택 미리보기!\n");
         orderList.printOrderList();
+        Menu menu = new Menu();
     }
 
     public static DateToVisit inputDate() {
@@ -33,8 +34,7 @@ public class Application {
             System.out.println("주문하실 메뉴를 메뉴와 개수를 알려주세요. (e.g. 해산물파스타-2,레드와인-1,초코케이크-1)");
             try {
                 List<String> orders = List.of(Console.readLine().split(","));
-                OrderList orderList = new OrderList(orders);
-                return orderList;
+                return new OrderList(orders);
             } catch (NumberFormatException e) {
                 System.out.println("[ERROR] 메뉴의 개수는 숫자여야 합니다.");
             } catch (IllegalArgumentException e) {
