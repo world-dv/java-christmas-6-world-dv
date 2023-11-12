@@ -10,6 +10,7 @@ public class Application {
         System.out.println("안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.");
         DateToVisit dateToVisit = inputDate();
         OrderList orderList = inputOrder();
+        System.out.println("12월 " + dateToVisit.getVisitDate() + "일에 우테코 식당에서 받을 이벤트 혜택 미리보기!\n");
         orderList.printOrderList();
     }
 
