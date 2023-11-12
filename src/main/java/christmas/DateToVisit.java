@@ -32,7 +32,7 @@ public class DateToVisit {
         return visitDate;
     }
 
-    public Boolean getStartDate() {
+    public Boolean getStarDate() {
         return startDate;
     }
 }
