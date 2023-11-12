@@ -63,8 +63,4 @@ public class OrderList {
         }
         System.out.println(orders);
     }
-
-    public List<Order> getOrderList() {
-        return orderList;
-    }
 }
