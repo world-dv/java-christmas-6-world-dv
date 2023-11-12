@@ -40,7 +40,7 @@ public class Event {
     }
 
     private Integer applySpecialEvent(Boolean star) {
-        if (star) {
+        if (star && applyEvent) {
             return -1000;
         }
         return 0;
