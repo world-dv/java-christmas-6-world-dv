@@ -8,7 +8,7 @@ public class DateToVisit {
     private final Boolean startDate;
     List<Integer> starDateList = Arrays.asList(3, 10, 17, 24, 25, 31);
 
-    DateToVisit(Integer date) {
+    public DateToVisit(Integer date) {
         validate(date);
         this.visitDate = date;
         this.startDate = isStarDate(date);
