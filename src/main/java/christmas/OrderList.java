@@ -19,6 +19,10 @@ public class OrderList {
         if (isCountOver20(orders)) {
             throw new IllegalArgumentException("[ERROR] 주문 음식이 20개가 넘을 경우 주문이 불가합니다.");
         }
+
+        if (isDuplicatedMenu(orders)) {
+            throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+        }
     }
 
     private List<Order> createOrderList(List<String> orders) {
@@ -54,6 +58,17 @@ public class OrderList {
 
     private Boolean isCountOver20(List<Order> orders) {
         return numOrder(orders) > 20;
+    }
+
+    private Boolean isDuplicatedMenu(List<Order> orders) {
+        List<String> menu = new ArrayList<>();
+        for (Order order : orders) {
+            String name = order.getName();
+            if (!menu.contains(name)) {
+                menu.add(name);
+            }
+        }
+        return menu.size() != orders.size();
     }
 
     public void printOrderList() {
