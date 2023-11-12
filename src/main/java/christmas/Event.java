@@ -3,10 +3,12 @@ package christmas;
 public class Event {
     private final Boolean applyEvent;
     private final Boolean giveawayEvent;
+    private final Integer christmasEvent;
 
-    public Event(OrderList orderList) {
+    public Event(OrderList orderList, int visitDate) {
         this.applyEvent = isOrderApplyEvent(orderList);
         this.giveawayEvent = isOrderApplyGiveawayEvent(orderList);
+        this.christmasEvent = applyChristmasEvent(visitDate);
     }
 
     private Boolean isOrderApplyEvent(OrderList orderList) {
@@ -18,10 +20,21 @@ public class Event {
     }
 
     private String applyGiveawayEvent() {
-        if (giveawayEvent) {
+        if (giveawayEvent && applyEvent) {
             return "샴페인 1개";
         }
         return "없음";
+    }
+
+    private Boolean isOrderApplyChristmasEvent(int visitDate) {
+        return visitDate <= 25;
+    }
+
+    private Integer applyChristmasEvent(int visitDate) {
+        if (isOrderApplyChristmasEvent(visitDate) && applyEvent) {
+            return (1000 + 100 * (visitDate - 1)) * -1;
+        }
+        return 0;
     }
 
     public void printGiveawayEvent() {
