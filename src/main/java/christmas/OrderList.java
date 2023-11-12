@@ -2,10 +2,12 @@ package christmas;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class OrderList {
     private final List<Order> orderList;
     private final Integer orderNum;
+    private final Integer orderPrice;
 
     public OrderList(List<String> order) {
         List<Order> orders = createOrderList(order);
@@ -13,6 +15,7 @@ public class OrderList {
 
         this.orderList = orders;
         this.orderNum = numOrder(orders);
+        this.orderPrice = sumOrderPrice();
     }
 
     private void validate(List<Order> orders) {
@@ -71,11 +74,25 @@ public class OrderList {
         return menu.size() != orders.size();
     }
 
+    private Integer sumOrderPrice() {
+        Menu menu = new Menu();
+        Map<String, Integer> menus = menu.getMenu();
+        int sumPrice = 0;
+        for (Order order : orderList) {
+            sumPrice += menus.get(order.getName()) * order.getCount();
+        }
+        return sumPrice;
+    }
+
     public void printOrderList() {
         String orders = "<주문 메뉴>\n";
         for (Order order : orderList) {
             orders += order.getName() + " " + order.getCount() + "개\n";
         }
         System.out.println(orders);
+    }
+
+    public void printOrderPrice() {
+        System.out.printf("<할인 전 총주문 금액>\n%,d원\n".formatted(orderPrice));
     }
 }
