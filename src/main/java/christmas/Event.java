@@ -5,10 +5,10 @@ public class Event {
     private final Boolean giveawayEvent;
     private final Integer christmasEvent;
 
-    public Event(OrderList orderList, int visitDate) {
+    public Event(OrderList orderList, DateToVisit dateToVisit) {
         this.applyEvent = isOrderApplyEvent(orderList);
         this.giveawayEvent = isOrderApplyGiveawayEvent(orderList);
-        this.christmasEvent = applyChristmasEvent(visitDate);
+        this.christmasEvent = applyChristmasEvent(dateToVisit.getVisitDate());
     }
 
     private Boolean isOrderApplyEvent(OrderList orderList) {
