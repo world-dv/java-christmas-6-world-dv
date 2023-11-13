@@ -37,7 +37,7 @@ public class OrderList {
         List<Order> orderList = new ArrayList<>();
         for (String order : orders) {
             if (!isContainBarOrComma(order)) {
-                throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+                throw new IllegalArgumentException(ExceptionList.ORDEREXCEPTION.getContent());
             }
             orderList.add(createOrder(splitOrder(order)));
         }
