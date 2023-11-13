@@ -12,7 +12,7 @@ public class InputView {
                 int date = Integer.parseInt(Console.readLine());
                 return new DateToVisit(date);
             } catch (NumberFormatException e) {
-                System.out.println("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
+                System.out.println(ExceptionList.DATEEXCPTION.getContent());
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
@@ -26,7 +26,7 @@ public class InputView {
                 List<String> orders = List.of(Console.readLine().split(","));
                 return new OrderList(orders);
             } catch (NumberFormatException e) {
-                System.out.println("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+                System.out.println(ExceptionList.ORDEREXCEPTION.getContent());
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }

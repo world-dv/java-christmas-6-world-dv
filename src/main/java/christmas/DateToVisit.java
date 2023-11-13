@@ -19,7 +19,7 @@ public class DateToVisit {
 
     private void validate(int date) {
         if (!isDateRangeRight(date)) {
-            throw new IllegalArgumentException("[ERROR] 식당 방문 예정 날짜는 1에서 31사이 숫자여야 합니다.");
+            throw new IllegalArgumentException(ExceptionList.DATEEXCPTION.getContent());
         }
     }
 
