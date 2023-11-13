@@ -5,6 +5,7 @@ public class Event {
     private final Integer christmasEvent;
     private final Integer specialEvent;
     private final Integer weekdayEvent;
+    private final Integer weekendEvent;
     private final Integer sumOfEventPrice;
 
     public Event(OrderList orderList, DateToVisit dateToVisit) {
@@ -12,16 +13,18 @@ public class Event {
         ChristmasEvent christmas = new ChristmasEvent();
         SpecialEvent special = new SpecialEvent();
         WeekdayEvent weekday = new WeekdayEvent();
+        WeekendEvent weekend = new WeekendEvent();
 
         this.giveawayEvent = giveaway.giveawayEvent(orderList);
         this.christmasEvent = christmas.christmasEvent(orderList, dateToVisit);
         this.specialEvent = special.specialEvent(orderList, dateToVisit);
         this.weekdayEvent = weekday.weekdayEvent(orderList, dateToVisit);
+        this.weekendEvent = weekend.weekendEvent(orderList, dateToVisit);
         this.sumOfEventPrice = sumEventPrice();
     }
 
     private Integer sumEventPrice() {
-        return christmasEvent + specialEvent + giveawayEvent + weekdayEvent;
+        return christmasEvent + specialEvent + giveawayEvent + weekdayEvent + weekendEvent;
     }
 
     private String getChampagne() {

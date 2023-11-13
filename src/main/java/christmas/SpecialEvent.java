@@ -6,7 +6,7 @@ public class SpecialEvent {
     }
 
     private Integer applySpecialEvent(OrderList orderList, DateToVisit dateToVisit) {
-        if (dateToVisit.getStarDate() && isOrderApplyEvent(orderList)) {
+        if (isOrderApplyEvent(orderList) && dateToVisit.getStarDate()) {
             return -1000;
         }
         return 0;

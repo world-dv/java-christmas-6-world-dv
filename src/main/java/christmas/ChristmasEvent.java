@@ -6,7 +6,7 @@ public class ChristmasEvent {
     }
 
     private Integer applyChristmasEvent(OrderList orderList, DateToVisit dateToVisit) {
-        if (isOrderApplyChristmasEvent(dateToVisit.getVisitDate()) && isOrderApplyEvent(orderList)) {
+        if (isOrderApplyEvent(orderList) && isOrderApplyChristmasEvent(dateToVisit.getVisitDate())) {
             return (1000 + 100 * (dateToVisit.getVisitDate() - 1)) * -1;
         }
         return 0;

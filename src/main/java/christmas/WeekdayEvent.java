@@ -6,7 +6,7 @@ public class WeekdayEvent {
     }
 
     private Integer applyWeekdayEvent(OrderList orderList, DateToVisit dateToVisit) {
-        if (!isDateFriOrSaturday(dateToVisit) && isOrderApplyEvent(orderList)) {
+        if (isOrderApplyEvent(orderList) && !isDateFriOrSaturday(dateToVisit)) {
             return orderList.getOrderType().get("디저트") * 2023 * -1;
         }
         return 0;
