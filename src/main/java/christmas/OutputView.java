@@ -46,14 +46,23 @@ public class OutputView {
         System.out.printf(eventList + "\n");
     }
 
+    private void printPromotionPrice(Promotion promotion) {
+        System.out.printf("<총혜택 금액>\n" + promotion.getSumOfPromotionPrice() + "\n");
+    }
+
+    private void printPromotionTotalPrice(OrderList orderList, Promotion promotion) {
+        System.out.printf("<할인 후 예상 결제 금액>\n%,d원\n\n".formatted(orderList.getOrderPrice() + promotion.getSumPromotionPrice()));
+    }
+
+    private void printBadge(Promotion promotion) {
+        System.out.println("<12월 이벤트 배지>\n" + promotion.getBadge());
+    }
+
     public void printPromotion(OrderList orderList, Promotion promotion) {
         printGiveaway(promotion);
         printPromotionDetails(promotion);
-
-        System.out.printf("<총혜택 금액>\n" + promotion.getSumOfPromotionPrice() + "\n");
-
-        System.out.printf("<할인 후 예상 결제 금액>\n%,d원\n\n".formatted(orderList.getOrderPrice() + promotion.getSumPromotionPrice()));
-
-        System.out.println("<12월 이벤트 배지>\n" + promotion.getBadge());
+        printPromotionPrice(promotion);
+        printPromotionTotalPrice(orderList, promotion);
+        printBadge(promotion);
     }
 }
