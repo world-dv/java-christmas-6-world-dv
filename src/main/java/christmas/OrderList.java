@@ -21,15 +21,15 @@ public class OrderList {
 
     private void validate(List<Order> orders, Map<String, Integer> orderTypes) {
         if (isCountOver20(orders)) {
-            throw new IllegalArgumentException("[ERROR] 주문 음식이 20개가 넘을 경우 주문이 불가합니다.");
+            throw new IllegalArgumentException(ExceptionList.ORDERCOUNTEXCEPTION.getContent());
         }
 
         if (isDuplicatedMenu(orders)) {
-            throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+            throw new IllegalArgumentException(ExceptionList.ORDEREXCEPTION.getContent());
         }
 
         if (isOrderOnlyDrink(orderTypes, orders)) {
-            throw new IllegalArgumentException("[ERROR] 음료만 주문할 수 없습니다.");
+            throw new IllegalArgumentException(ExceptionList.DRINKEXCEPTION.getContent());
         }
     }
 
@@ -84,8 +84,7 @@ public class OrderList {
     }
 
     private Integer sumOrderPrice() {
-        Menu menu = new Menu();
-        Map<String, Integer> menus = menu.getMenu();
+        Map<String, Integer> menus = new Menu().getMenu();
         int sumPrice = 0;
         for (Order order : orderList) {
             sumPrice += menus.get(order.getName()) * order.getCount();
