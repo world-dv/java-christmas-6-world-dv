@@ -1,9 +1,5 @@
 package christmas;
 
-import camp.nextstep.edu.missionutils.Console;
-
-import java.util.List;
-
 public class Application {
     public static void main(String[] args) {
         InputView inputView = new InputView();
@@ -17,7 +13,7 @@ public class Application {
         outputView.printDate(dateToVisit);
         outputView.printMenu(orderList);
 
-        Event event = new Event(orderList, dateToVisit);
-        outputView.printEvent(orderList, event);
+        Promotion event = new Promotion(orderList, dateToVisit);
+        outputView.printPromotion(orderList, event);
     }
 }
