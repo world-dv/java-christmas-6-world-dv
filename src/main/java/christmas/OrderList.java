@@ -7,6 +7,7 @@ import java.util.Map;
 public class OrderList {
     private final List<Order> orderList;
     private final Integer orderPrice;
+    private final Map<String, Integer> orderType;
 
     public OrderList(List<String> order) {
         List<Order> orders = createOrderList(order);
@@ -14,6 +15,7 @@ public class OrderList {
 
         this.orderList = orders;
         this.orderPrice = sumOrderPrice();
+        this.orderType = calculateOrderType();
     }
 
     private void validate(List<Order> orders) {
@@ -80,6 +82,16 @@ public class OrderList {
             sumPrice += menus.get(order.getName()) * order.getCount();
         }
         return sumPrice;
+    }
+
+    private Map<String, Integer> calculateOrderType() {
+        Map<String, Integer> orderType = new MenuType().getMenuTypeCount();
+        Map<String, String> menuType = new MenuType().getMenuType();
+        for (int order = 0; order < orderList.size(); order++) {
+            String menu = menuType.get(orderList.get(order).getName());
+            orderType.put(menu, orderType.get(menu) + orderList.get(order).getCount());
+        }
+        return orderType;
     }
 
     public void printOrderList() {

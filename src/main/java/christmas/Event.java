@@ -33,7 +33,6 @@ public class Event {
         }
         return "샴페인 1개";
     }
-    
     public void printGiveawayEvent() {
         System.out.println("<증정 메뉴>\n" + getChampagne());
     }
