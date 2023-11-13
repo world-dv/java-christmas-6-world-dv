@@ -11,20 +11,25 @@ public class OrderList {
 
     public OrderList(List<String> order) {
         List<Order> orders = createOrderList(order);
-        validate(orders);
+        Map<String, Integer> orderTypes = calculateOrderType(orders);
+        validate(orders, orderTypes);
 
         this.orderList = orders;
         this.orderPrice = sumOrderPrice();
-        this.orderType = calculateOrderType();
+        this.orderType = orderTypes;
     }
 
-    private void validate(List<Order> orders) {
+    private void validate(List<Order> orders, Map<String, Integer> orderTypes) {
         if (isCountOver20(orders)) {
             throw new IllegalArgumentException("[ERROR] 주문 음식이 20개가 넘을 경우 주문이 불가합니다.");
         }
 
         if (isDuplicatedMenu(orders)) {
             throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+        }
+
+        if (isOrderOnlyDrink(orderTypes, orders)) {
+            throw new IllegalArgumentException("[ERROR] 음료만 주문할 수 없습니다.");
         }
     }
 
@@ -74,6 +79,10 @@ public class OrderList {
         return menu.size() != orders.size();
     }
 
+    private Boolean isOrderOnlyDrink(Map<String, Integer> orderTypes, List<Order> orders) {
+        return orderTypes.get("음료") == numOrder(orders);
+    }
+
     private Integer sumOrderPrice() {
         Menu menu = new Menu();
         Map<String, Integer> menus = menu.getMenu();
@@ -84,12 +93,12 @@ public class OrderList {
         return sumPrice;
     }
 
-    private Map<String, Integer> calculateOrderType() {
+    private Map<String, Integer> calculateOrderType(List<Order> orders) {
         Map<String, Integer> orderType = new MenuType().getMenuTypeCount();
         Map<String, String> menuType = new MenuType().getMenuType();
-        for (int order = 0; order < orderList.size(); order++) {
-            String menu = menuType.get(orderList.get(order).getName());
-            orderType.put(menu, orderType.get(menu) + orderList.get(order).getCount());
+        for (int order = 0; order < orders.size(); order++) {
+            String menu = menuType.get(orders.get(order).getName());
+            orderType.put(menu, orderType.get(menu) + orders.get(order).getCount());
         }
         return orderType;
     }
