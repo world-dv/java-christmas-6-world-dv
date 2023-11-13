@@ -7,6 +7,8 @@ public class Event {
     private final Integer weekdayEvent;
     private final Integer weekendEvent;
     private final Integer sumOfEventPrice;
+    private final Integer sumEventPrice;
+    private final String badge;
 
     public Event(OrderList orderList, DateToVisit dateToVisit) {
         GiveawayEvent giveaway = new GiveawayEvent();
@@ -20,11 +22,31 @@ public class Event {
         this.specialEvent = special.specialEvent(orderList, dateToVisit);
         this.weekdayEvent = weekday.weekdayEvent(orderList, dateToVisit);
         this.weekendEvent = weekend.weekendEvent(orderList, dateToVisit);
-        this.sumOfEventPrice = sumEventPrice();
+        this.sumOfEventPrice = sumOfEventPrice();
+        this.sumEventPrice = sumEventPrice();
+        this.badge = calculateBadge();
+    }
+
+    private Integer sumOfEventPrice() {
+        return christmasEvent + specialEvent + giveawayEvent + weekdayEvent + weekendEvent;
     }
 
     private Integer sumEventPrice() {
-        return christmasEvent + specialEvent + giveawayEvent + weekdayEvent + weekendEvent;
+        return christmasEvent + specialEvent + weekdayEvent + weekendEvent;
+    }
+
+    private String calculateBadge() {
+        int eventPrice = sumOfEventPrice * -1;
+        if (eventPrice < 5000) {
+            return "없음";
+        }
+        if (eventPrice < 10000) {
+            return "별";
+        }
+        if (eventPrice < 20000) {
+            return "트리";
+        }
+        return "산타";
     }
 
     public String getChampagne() {
@@ -74,6 +96,10 @@ public class Event {
     }
 
     public Integer getSumEventPrice() {
-        return christmasEvent + weekdayEvent + weekendEvent + specialEvent;
+        return sumEventPrice;
+    }
+
+    public String getBadge() {
+        return badge;
     }
 }

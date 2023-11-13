@@ -38,6 +38,8 @@ public class OutputView {
 
         System.out.printf("<총혜택 금액>\n" + event.getSumOfEventPrice() + "\n");
 
-        System.out.printf("<할인 후 예상 결제 금액>\n%,d원\n".formatted(orderList.getOrderPrice() + event.getSumEventPrice()));
+        System.out.printf("<할인 후 예상 결제 금액>\n%,d원\n\n".formatted(orderList.getOrderPrice() + event.getSumEventPrice()));
+
+        System.out.println("<12월 이벤트 배지>\n" + event.getBadge());
     }
 }
