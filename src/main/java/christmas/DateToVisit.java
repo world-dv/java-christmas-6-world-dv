@@ -7,8 +7,8 @@ public class DateToVisit {
     private final Integer visitDate;
     private final Boolean startDate;
     private final String dayOfDate;
-    List<Integer> starDateList = Arrays.asList(3, 10, 17, 24, 25, 31);
-    List<String> day = Arrays.asList("금", "토", "일", "월", "화", "수", "목");
+    private final List<Integer> starDateList = Arrays.asList(3, 10, 17, 24, 25, 31);
+    private final List<String> day = Arrays.asList("금", "토", "일", "월", "화", "수", "목");
 
     public DateToVisit(Integer date) {
         validate(date);
