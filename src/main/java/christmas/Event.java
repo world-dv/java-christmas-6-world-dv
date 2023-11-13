@@ -9,34 +9,18 @@ public class Event {
 
     public Event(OrderList orderList, DateToVisit dateToVisit) {
         GiveawayEvent giveaway = new GiveawayEvent();
+        ChristmasEvent christmas = new ChristmasEvent();
+        SpecialEvent special = new SpecialEvent();
 
         this.applyEvent = isOrderApplyEvent(orderList);
         this.giveawayEvent = giveaway.giveawayEvent(applyEvent, orderList.getOrderPrice());
-        this.christmasEvent = applyChristmasEvent(dateToVisit.getVisitDate());
-        this.specialEvent = applySpecialEvent(dateToVisit.getStarDate());
+        this.christmasEvent = christmas.applyChristmasEvent(applyEvent, dateToVisit.getVisitDate());
+        this.specialEvent = special.applySpecialEvent(applyEvent, dateToVisit.getStarDate());
         this.sumOfEventPrice = sumEventPrice();
     }
 
     private Boolean isOrderApplyEvent(OrderList orderList) {
         return orderList.getOrderPrice() >= 10000;
-    }
-
-    private Boolean isOrderApplyChristmasEvent(int visitDate) {
-        return visitDate <= 25;
-    }
-
-    private Integer applyChristmasEvent(int visitDate) {
-        if (isOrderApplyChristmasEvent(visitDate) && applyEvent) {
-            return (1000 + 100 * (visitDate - 1)) * -1;
-        }
-        return 0;
-    }
-
-    private Integer applySpecialEvent(Boolean star) {
-        if (star && applyEvent) {
-            return -1000;
-        }
-        return 0;
     }
 
     private Integer sumEventPrice() {
