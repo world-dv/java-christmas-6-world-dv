@@ -18,6 +18,6 @@ public class Application {
         outputView.printMenu(orderList);
 
         Event event = new Event(orderList, dateToVisit);
-        outputView.printEvent(event);
+        outputView.printEvent(orderList, event);
     }
 }

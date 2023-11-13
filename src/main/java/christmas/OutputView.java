@@ -20,7 +20,7 @@ public class OutputView {
         System.out.printf("<할인 전 총주문 금액>\n%,d원\n\n".formatted(orderList.getOrderPrice()));
     }
 
-    public void printEvent(Event event) {
+    public void printEvent(OrderList orderList, Event event) {
         System.out.println("<증정 메뉴>\n" + event.getChampagne());
 
         System.out.println("<혜택 내역>");
@@ -36,6 +36,8 @@ public class OutputView {
         }
         System.out.printf(eventList + "\n");
 
-        System.out.printf("<총혜택 내역>\n" + event.getSumOfEventPrice());
+        System.out.printf("<총혜택 금액>\n" + event.getSumOfEventPrice() + "\n");
+
+        System.out.printf("<할인 후 예상 결제 금액>\n%,d원\n".formatted(orderList.getOrderPrice() + event.getSumEventPrice()));
     }
 }

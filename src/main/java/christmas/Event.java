@@ -72,4 +72,8 @@ public class Event {
     public String getSumOfEventPrice() {
         return "%,d원\n".formatted(sumOfEventPrice);
     }
+
+    public Integer getSumEventPrice() {
+        return christmasEvent + weekdayEvent + weekendEvent + specialEvent;
+    }
 }
