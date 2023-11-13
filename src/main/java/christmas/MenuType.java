@@ -31,7 +31,7 @@ public class MenuType {
 
     private Map<String, Integer> createMenuTypeCountList() {
         Map<String, Integer> menuCount = new HashMap<>();
-        menuCount.put("에피타이저", 0);
+        menuCount.put("애피타이저", 0);
         menuCount.put("메인", 0);
         menuCount.put("디저트", 0);
         menuCount.put("음료", 0);

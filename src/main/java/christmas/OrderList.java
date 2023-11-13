@@ -103,16 +103,8 @@ public class OrderList {
         return orderType;
     }
 
-    public void printOrderList() {
-        String orders = "<주문 메뉴>\n";
-        for (Order order : orderList) {
-            orders += order.getName() + " " + order.getCount() + "개\n";
-        }
-        System.out.println(orders);
-    }
-
-    public void printOrderPrice() {
-        System.out.printf("<할인 전 총주문 금액>\n%,d원\n\n".formatted(orderPrice));
+    public List<Order> getOrderList() {
+        return orderList;
     }
 
     public Integer getOrderPrice() {
