@@ -118,4 +118,8 @@ public class OrderList {
     public Integer getOrderPrice() {
         return orderPrice;
     }
+
+    public Map<String, Integer> getOrderType() {
+        return orderType;
+    }
 }

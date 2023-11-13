@@ -1,18 +1,18 @@
 package christmas;
 
 public class GiveawayEvent {
-    public Integer giveawayEvent(boolean applyEvent, int orderPrice) {
-        return applyGiveawayEvent(applyEvent, orderPrice);
+    public Integer giveawayEvent(OrderList orderList) {
+        return applyGiveawayEvent(orderList);
     }
 
-    private Boolean isOrderApplyGiveawayEvent(int orderPrice) {
-        return orderPrice >= 120000;
-    }
-
-    private Integer applyGiveawayEvent(boolean applyEvent, int orderPrice) {
-        if (isOrderApplyGiveawayEvent(orderPrice) && applyEvent) {
+    private Integer applyGiveawayEvent(OrderList orderList) {
+        if (isOrderApplyGiveawayEvent(orderList)) {
             return -25000;
         }
         return 0;
+    }
+
+    private Boolean isOrderApplyGiveawayEvent(OrderList orderList) {
+        return orderList.getOrderPrice() >= 120000;
     }
 }
