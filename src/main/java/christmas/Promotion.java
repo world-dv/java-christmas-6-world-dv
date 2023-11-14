@@ -58,35 +58,35 @@ public class Promotion {
         if (christmasPromotion == 0) {
             return "";
         }
-        return "크리스마스 디데이 할인 : %,d원\n".formatted(christmasPromotion);
+        return "크리스마스 디데이 할인: %,d원\n".formatted(christmasPromotion);
     }
 
     public String getWeekendPromotion() {
         if (weekendPromotion == 0) {
             return "";
         }
-        return "주말 할인 : %,d원\n".formatted(weekendPromotion);
+        return "주말 할인: %,d원\n".formatted(weekendPromotion);
     }
 
     public String getWeekdayPromotion() {
         if (weekdayPromotion == 0) {
             return "";
         }
-        return "평일 할인 : %,d원\n".formatted(weekdayPromotion);
+        return "평일 할인: %,d원\n".formatted(weekdayPromotion);
     }
 
     public String getSpecialPromotion() {
         if (specialPromotion == 0) {
             return "";
         }
-        return "특별 할인 : %,d원\n".formatted(specialPromotion);
+        return "특별 할인: %,d원\n".formatted(specialPromotion);
     }
 
     public String getGiveawayPromotion() {
         if (giveawayPromotion == 0) {
             return "";
         }
-        return "증정 이벤트 : %,d원\n".formatted(giveawayPromotion);
+        return "증정 이벤트: %,d원\n".formatted(giveawayPromotion);
     }
 
     public String getSumOfPromotionPrice() {
