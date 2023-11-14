@@ -14,14 +14,15 @@ public class OutputView {
         System.out.println("<주문 메뉴>");
         String orders = "";
         for (Order order : orderList.getOrderList()) {
-            orders += order.getName() + " " + order.getCount() + "개";
+            orders += order.getName() + " " + order.getCount() + "개\n";
         }
         System.out.println(orders);
-        System.out.println();
     }
 
     private void printTotalPrice(OrderList orderList) {
-        System.out.printf("<할인 전 총주문 금액>\n%,d원\n\n".formatted(orderList.getOrderPrice()));
+        System.out.println("<할인 전 총주문 금액>");
+        System.out.printf("%,d원\n".formatted(orderList.getOrderPrice()));
+        System.out.println();
     }
 
     public void printMenu(OrderList orderList) {
