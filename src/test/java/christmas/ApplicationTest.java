@@ -113,6 +113,29 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void 주문_범위_20개_예외_테스트() {
+        assertSimpleTest(() -> {
+            runException("3", "티본스테이크-23,아이스크림-8,제로콜라-10");
+            assertThat(output()).contains("[ERROR]");
+        });
+    }
+
+    @Test
+    void 주문_유효성_예외_테스트() {
+        assertSimpleTest(() -> {
+            runException("3", "제로콜라-1");
+            assertThat(output()).contains("[ERROR]");
+        });
+    }
+
+    @Test
+    void 주문_범위_예외_테스트() {
+        assertSimpleTest(() -> {
+            runException("3", "티본스테이크-0");
+            assertThat(output()).contains("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+        });
+    }
 
     @Override
     protected void runMain() {
