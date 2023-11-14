@@ -225,6 +225,22 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void 특별_할인_출력() {
+        assertSimpleTest(() -> {
+            run("24", "티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1");
+            assertThat(output()).contains("특별 할인:");
+        });
+    }
+
+    @Test
+    void 특별_할인_미출력() {
+        assertSimpleTest(() -> {
+            run("20", "티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1");
+            assertThat(output()).doesNotContain("특별 할인:");
+        });
+    }
+
     @Override
     protected void runMain() {
         Application.main(new String[]{});
