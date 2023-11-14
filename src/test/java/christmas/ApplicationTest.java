@@ -289,6 +289,22 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void 인사_메시지_출력() {
+        assertSimpleTest(() -> {
+            run("3", "티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1");
+            assertThat(output()).contains("안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.");
+        });
+    }
+
+    @Test
+    void 예약_날짜_출력() {
+        assertSimpleTest(() -> {
+            run("3", "티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1");
+            assertThat(output()).contains("12월 3일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!");
+        });
+    }
+
     @Override
     protected void runMain() {
         Application.main(new String[]{});
