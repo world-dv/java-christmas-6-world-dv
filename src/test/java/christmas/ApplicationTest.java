@@ -257,6 +257,38 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void 이벤트_배지_별_출력() {
+        assertSimpleTest(() -> {
+            run("3", "초코케이크-2,제로콜라-1");
+            assertThat(output()).contains("<12월 이벤트 배지>" + LINE_SEPARATOR + "별");
+        });
+    }
+
+    @Test
+    void 이벤트_배지_트리_출력() {
+        assertSimpleTest(() -> {
+            run("3", "바비큐립-1,초코케이크-2,아이스크림-2,제로콜라-1");
+            assertThat(output()).contains("<12월 이벤트 배지>" + LINE_SEPARATOR + "트리");
+        });
+    }
+
+    @Test
+    void 이벤트_배지_산타_출력() {
+        assertSimpleTest(() -> {
+            run("3", "티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1");
+            assertThat(output()).contains("<12월 이벤트 배지>" + LINE_SEPARATOR + "산타");
+        });
+    }
+
+    @Test
+    void 이벤트_배지_없음_출력() {
+        assertSimpleTest(() -> {
+            run("3", "타파스-1,제로콜라-1 ");
+            assertThat(output()).contains("<12월 이벤트 배지>" + LINE_SEPARATOR + "없음");
+        });
+    }
+
     @Override
     protected void runMain() {
         Application.main(new String[]{});
