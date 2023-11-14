@@ -49,9 +49,9 @@ public class Promotion {
 
     public String getChampagne() {
         if (giveawayPromotion == 0) {
-            return "없음\n";
+            return "없음";
         }
-        return "샴페인 1개\n";
+        return "샴페인 1개";
     }
 
     public String getChristmasPromotion() {
@@ -90,7 +90,7 @@ public class Promotion {
     }
 
     public String getSumOfPromotionPrice() {
-        return "%,d원\n".formatted(sumOfPromotionPrice);
+        return "%,d원".formatted(sumOfPromotionPrice);
     }
 
     public Integer getTotalPromotionPrice() {

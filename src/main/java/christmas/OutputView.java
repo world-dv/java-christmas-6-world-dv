@@ -11,11 +11,13 @@ public class OutputView {
     }
 
     private void printOrderMenu(OrderList orderList) {
-        String orders = "<주문 메뉴>\n";
+        System.out.println("<주문 메뉴>");
+        String orders = "";
         for (Order order : orderList.getOrderList()) {
-            orders += order.getName() + " " + order.getCount() + "개\n";
+            orders += order.getName() + " " + order.getCount() + "개";
         }
         System.out.println(orders);
+        System.out.println();
     }
 
     private void printTotalPrice(OrderList orderList) {
@@ -28,7 +30,9 @@ public class OutputView {
     }
 
     private void printGiveaway(Promotion promotion) {
-        System.out.println("<증정 메뉴>\n" + promotion.getChampagne());
+        System.out.println("<증정 메뉴>");
+        System.out.printf(promotion.getChampagne());
+        System.out.println();
     }
 
     private void printPromotionDetails(Promotion promotion) {
@@ -43,26 +47,35 @@ public class OutputView {
         if (eventList.equals("")) {
             eventList = "없음\n";
         }
-        System.out.printf(eventList + "\n");
+        System.out.printf(eventList);
     }
 
     private void printPromotionPrice(Promotion promotion) {
-        System.out.printf("<총혜택 금액>\n" + promotion.getSumOfPromotionPrice() + "\n");
+        System.out.println("<총혜택 금액>");
+        System.out.printf(promotion.getSumOfPromotionPrice());
+        System.out.println();
     }
 
     private void printPromotionTotalPrice(Promotion promotion) {
-        System.out.printf("<할인 후 예상 결제 금액>\n%,d원\n\n".formatted(promotion.getTotalPromotionPrice()));
+        System.out.println("<할인 후 예상 결제 금액>");
+        System.out.printf("%,d원".formatted(promotion.getTotalPromotionPrice()));
+        System.out.println();
     }
 
     private void printBadge(Promotion promotion) {
-        System.out.println("<12월 이벤트 배지>\n" + promotion.getBadge());
+        System.out.println("<12월 이벤트 배지>");
+        System.out.println(promotion.getBadge());
     }
 
     public void printPromotion(Promotion promotion) {
         printGiveaway(promotion);
+        System.out.println();
         printPromotionDetails(promotion);
+        System.out.println();
         printPromotionPrice(promotion);
+        System.out.println();
         printPromotionTotalPrice(promotion);
+        System.out.println();
         printBadge(promotion);
     }
 }
