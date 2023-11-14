@@ -306,6 +306,18 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 주문_내역_출력() {
+        assertSimpleTest(() -> {
+            run("3", "티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1");
+            assertThat(output()).contains(
+                    "티본스테이크 1개",
+                    "바비큐립 1개",
+                    "초코케이크 2개",
+                    "제로콜라 1개");
+        });
+    }
+
+    @Test
     void 증정_메뉴_출력() {
         assertSimpleTest(() -> {
             run("3", "티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1");
