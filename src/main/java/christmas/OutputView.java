@@ -7,7 +7,7 @@ public class OutputView {
     }
 
     public void printDate(DateToVisit dateToVisit) {
-        System.out.println("12월 " + dateToVisit.getVisitDate() + "일에 우테코 식당에서 받을 이벤트 혜택 미리보기!\n");
+        System.out.println("12월 " + dateToVisit.getVisitDate() + "일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!\n");
     }
 
     private void printOrderMenu(OrderList orderList) {
