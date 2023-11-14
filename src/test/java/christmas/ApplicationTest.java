@@ -65,6 +65,14 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void 날짜_입력_예외_테스트() {
+        assertSimpleTest(() -> {
+            runException("13일");
+            assertThat(output()).contains("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
+        });
+    }
+
     @Override
     protected void runMain() {
         Application.main(new String[]{});
