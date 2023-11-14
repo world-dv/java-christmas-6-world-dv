@@ -14,6 +14,6 @@ public class Application {
         outputView.printMenu(orderList);
 
         Promotion event = new Promotion(orderList, dateToVisit);
-        outputView.printPromotion(orderList, event);
+        outputView.printPromotion(event);
     }
 }
