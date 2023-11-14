@@ -209,6 +209,22 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void 평일_주말_할인_미출력() {
+        assertSimpleTest(() -> {
+            run("21", "티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1");
+            assertThat(output()).doesNotContain("주말 할인:");
+        });
+    }
+
+    @Test
+    void 주말_평일_할인_미출력() {
+        assertSimpleTest(() -> {
+            run("23", "티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1");
+            assertThat(output()).doesNotContain("평일 할인:");
+        });
+    }
+
     @Override
     protected void runMain() {
         Application.main(new String[]{});
