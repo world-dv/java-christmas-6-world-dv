@@ -11,7 +11,7 @@ public class Order {
     }
 
     private void validate(String name, int count) {
-        if (!isContainMenu(name)) {
+        if (!isContainMenu(name) || isCountOver1(count)) {
             throw new IllegalArgumentException(ExceptionList.ORDEREXCEPTION.getContent());
         }
     }
@@ -19,6 +19,10 @@ public class Order {
     private Boolean isContainMenu(String name) {
         Menu menu = new Menu();
         return menu.getMenu().containsKey(name);
+    }
+
+    private Boolean isCountOver1(int count) {
+        return count < 1;
     }
 
     public String getName() {
