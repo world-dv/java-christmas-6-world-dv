@@ -153,6 +153,62 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void 평일_일요일_할인_출력() {
+        assertSimpleTest(() -> {
+            run("17", "티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1");
+            assertThat(output()).contains("평일 할인: ");
+        });
+    }
+
+    @Test
+    void 평일_월요일_할인_출력() {
+        assertSimpleTest(() -> {
+            run("18", "티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1");
+            assertThat(output()).contains("평일 할인: ");
+        });
+    }
+
+    @Test
+    void 평일_화요일_할인_출력() {
+        assertSimpleTest(() -> {
+            run("19", "티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1");
+            assertThat(output()).contains("평일 할인: ");
+        });
+    }
+
+    @Test
+    void 평일_수요일_할인_출력() {
+        assertSimpleTest(() -> {
+            run("20", "티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1");
+            assertThat(output()).contains("평일 할인: ");
+        });
+    }
+
+    @Test
+    void 평일_목요일_할인_출력() {
+        assertSimpleTest(() -> {
+            run("21", "티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1");
+            assertThat(output()).contains("평일 할인: ");
+        });
+    }
+
+    @Test
+    void 주말_금요일_할인_출력() {
+        assertSimpleTest(() -> {
+            run("22", "티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1");
+            assertThat(output()).contains("주말 할인: ");
+        });
+    }
+
+    @Test
+    void 주말_토요일_할인_출력() {
+        assertSimpleTest(() -> {
+            run("23", "티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1");
+            assertThat(output()).contains("주말 할인: ");
+        });
+    }
+
     @Override
     protected void runMain() {
         Application.main(new String[]{});
