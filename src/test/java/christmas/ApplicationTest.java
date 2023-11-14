@@ -73,6 +73,30 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void 주문_입력_예외_테스트() {
+        assertSimpleTest(() -> {
+            runException("3", "티본스테이크-3,레드와인-3,코카콜라-1");
+            assertThat(output()).contains("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+        });
+    }
+
+    @Test
+    void 주문_쉼표_예외_테스트() {
+        assertSimpleTest(() -> {
+            runException("3", "제로콜라-1,타파스-2 시저샐러드-3");
+            assertThat(output()).contains("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+        });
+    }
+
+    @Test
+    void 주문_바_예외_테스트() {
+        assertSimpleTest(() -> {
+            runException("3", "아이스크림--1");
+            assertThat(output()).contains("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+        });
+    }
+
     @Override
     protected void runMain() {
         Application.main(new String[]{});
