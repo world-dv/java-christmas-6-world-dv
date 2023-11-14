@@ -4,14 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MenuType {
-    private final Map<String, String> menuType;
-    private final Map<String, Integer> menuTypeCount;
-
-    public MenuType() {
-        this.menuType = createMenuTypeList();
-        this.menuTypeCount = createMenuTypeCountList();
-    }
-
     private Map<String, String> createMenuTypeList() {
         Map<String, String> menuType = new HashMap<>();
         menuType.put("양송이수프", "애피타이저");
@@ -39,10 +31,10 @@ public class MenuType {
     }
 
     public Map<String, Integer> getMenuTypeCount() {
-        return menuTypeCount;
+        return createMenuTypeCountList();
     }
 
     public Map<String, String> getMenuType() {
-        return menuType;
+        return createMenuTypeList();
     }
 }

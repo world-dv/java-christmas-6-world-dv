@@ -6,9 +6,7 @@ public class Promotion {
     private final Integer specialPromotion;
     private final Integer weekdayPromotion;
     private final Integer weekendPromotion;
-    private final Integer sumOfPromotionPrice;
     private final Integer totalPromotionPrice;
-    private final String badge;
 
     public Promotion(OrderList orderList, DateToVisit dateToVisit) {
         this.giveawayPromotion = new GiveawayPromotion().giveawayPromotion(orderList);
@@ -16,9 +14,7 @@ public class Promotion {
         this.specialPromotion = new SpecialPromotion().specialPromotion(orderList, dateToVisit);
         this.weekdayPromotion = new WeekdayPromotion().weekdayPromotion(orderList, dateToVisit);
         this.weekendPromotion = new WeekendPromotion().weekendPromotion(orderList, dateToVisit);
-        this.sumOfPromotionPrice = sumOfPromotionPrice();
         this.totalPromotionPrice = calculateTotalPromotionPrice(orderList);
-        this.badge = calculateBadge();
     }
 
     private Integer sumOfPromotionPrice() {
@@ -34,7 +30,7 @@ public class Promotion {
     }
 
     private String calculateBadge() {
-        int eventPrice = sumOfPromotionPrice * -1;
+        int eventPrice = sumOfPromotionPrice() * -1;
         if (eventPrice < 5000) {
             return "없음";
         }
@@ -90,7 +86,7 @@ public class Promotion {
     }
 
     public String getSumOfPromotionPrice() {
-        return "%,d원".formatted(sumOfPromotionPrice);
+        return "%,d원".formatted(sumOfPromotionPrice());
     }
 
     public Integer getTotalPromotionPrice() {
@@ -98,6 +94,6 @@ public class Promotion {
     }
 
     public String getBadge() {
-        return badge;
+        return calculateBadge();
     }
 }

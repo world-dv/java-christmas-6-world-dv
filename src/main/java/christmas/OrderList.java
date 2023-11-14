@@ -6,7 +6,6 @@ import java.util.Map;
 
 public class OrderList {
     private final List<Order> orderList;
-    private final Integer orderPrice;
     private final Map<String, Integer> orderType;
 
     public OrderList(List<String> order) {
@@ -15,7 +14,6 @@ public class OrderList {
         validate(orders, orderTypes);
 
         this.orderList = orders;
-        this.orderPrice = sumOrderPrice();
         this.orderType = orderTypes;
     }
 
@@ -107,7 +105,7 @@ public class OrderList {
     }
 
     public Integer getOrderPrice() {
-        return orderPrice;
+        return sumOrderPrice();
     }
 
     public Map<String, Integer> getOrderType() {

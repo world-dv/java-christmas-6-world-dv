@@ -5,16 +5,12 @@ import java.util.List;
 
 public class DateToVisit {
     private final Integer visitDate;
-    private final Boolean startDate;
-    private final String dayOfDate;
     private final List<Integer> starDateList = Arrays.asList(3, 10, 17, 24, 25, 31);
     private final List<String> day = Arrays.asList("금", "토", "일", "월", "화", "수", "목");
 
     public DateToVisit(Integer date) {
         validate(date);
         this.visitDate = date;
-        this.startDate = isStarDate(date);
-        this.dayOfDate = calculateDay(date);
     }
 
     private void validate(int date) {
@@ -40,10 +36,10 @@ public class DateToVisit {
     }
 
     public Boolean getStarDate() {
-        return startDate;
+        return isStarDate(visitDate);
     }
 
     public String getDayOfDate() {
-        return dayOfDate;
+        return calculateDay(visitDate);
     }
 }
